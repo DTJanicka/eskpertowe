@@ -1,8 +1,9 @@
 package Window;
-import Window.iPanel;
 
 import Question.Question;
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.List;
 
@@ -16,23 +17,50 @@ public class QuizWindow implements iPanel {
     private JButton no;
     private JPanel panel;
     private Question questions;
-    private List<String> list;
+    private List<String> listOfQuestion;
+    private List<String> listOfAnswer;
+    private int size;
 
     protected QuizWindow() throws IOException {
         readQuestion();
-        change(list.get(0));
+        setFirstQuestion(listOfQuestion.get(0));
 
     }
 
     protected void readQuestion()throws IOException{
         questions = new Question();
-        list = questions.getList();
+        listOfQuestion = questions.getList();
+    }
+
+
+    protected void setFirstQuestion(String text){
+        question.setText(text);
+    }
+
+    protected void changeQuestion(int index){
+        question.setText(listOfQuestion.get(index));
     }
 
     @Override
     public void change(String text) {
-        question.setText(text);
+        yes.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                listOfAnswer.add("1");
+                size = listOfAnswer.size();
+                changeQuestion(size + 1);
+            }
+        });
+        no.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                listOfAnswer.add("0");
+                size = listOfAnswer.size();
+                changeQuestion(size + 1);
+            }
+        });
     }
+
 
     @Override
     public JPanel getPanel(){
