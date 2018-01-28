@@ -11,7 +11,6 @@ public class Question {
         question = new ArrayList<>();
         file = new File("question.txt");
         readFile();
-        readList(question);
     }
 
     private void readFile() throws IOException {
@@ -30,11 +29,7 @@ public class Question {
         }
     }
 
-    private void readList(List<String> list){
-        for (String s: list
-             ) {
-            System.out.println(s);
-
-        }
+    public List<String> getList(){
+        return question;
     }
 }

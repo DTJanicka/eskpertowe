@@ -3,18 +3,19 @@ package Window; /**
  */
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class MainWindow extends JFrame{
     JPanel panel;
     QuizWindow quizWindow;
     private static MainWindow INSTANCE;
 
-    private MainWindow(){
+    private MainWindow() throws IOException {
         super();
         quizWindow = new QuizWindow();
     }
 
-    public static MainWindow getINSTANCE(){
+    public static MainWindow getINSTANCE() throws IOException {
         if(INSTANCE == null){
             INSTANCE = new MainWindow();
         }

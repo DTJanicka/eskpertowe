@@ -10,8 +10,8 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        //Managment managment = Managment.getINSTANCE();
-        Question q = new Question();
+        Managment managment = Managment.getINSTANCE();
+        //Question q = new Question();
     }
 
 
